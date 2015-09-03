@@ -1130,6 +1130,11 @@ static void button_search_click(GtkButton *button, gpointer user_data)
 			else
 				count = WORDNET_INTERFACE_ALL;
 
+            FILE *raj_fp = fopen("/home/shingu/artha_words.txt","a");
+            fprintf(raj_fp,"%s\n",search_str);
+            fclose(raj_fp);
+            printf("searching %s\n",search_str);
+
 			wni_request_nyms(search_str, &results, (WNIRequestFlags) count, advanced_mode);
 
 			// clear prior text in definitons text view & relatives
